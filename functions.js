@@ -24,7 +24,24 @@ async function searchDrug(drugName) {
 }
 
 
+// function to get all dosageforms
+async function getAllDosageForms() {
+    console.log("called")
+    let data = await loadData(filePath)
+    let result = await data.map((drugObj) => {
+        return drugObj.dosage_form
+    })
+    let unique = new Set()
+    for (let i = 0; i < result.length; i++) {
+        unique.add(result[i])
+    }
+    
+    return unique
+}
+
+
 module.exports = {
     loadData,
-    searchDrug
+    searchDrug,
+    getAllDosageForms
 }

@@ -22,6 +22,13 @@ async function main() {
         let result = await utils.searchDrug(drugName)
         res.json(result)
     })
+
+    app.get("/api/dosageforms", async (req,res) => {
+        console.log("route called")
+        let allDosageForms = await utils.getAllDosageForms()
+        console.log(allDosageForms)
+        res.json(Array.from(allDosageForms))
+    })
 }
 
 main()
